@@ -11,10 +11,8 @@
 <body class="flex flex-col min-h-screen p-4 max-w-md mx-auto justify-between">
 <header class="flex justify-between items-center glass p-3 rounded-xl mb-4">
 <span class="font-bold text-pink-400"><i class="fa-solid fa-heart"></i> Heart Cipher</span>
-<div>
-<button onclick="openHint()" class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/30 mr-2">ขอคำใบ้</button>
-<button onclick="toggleAdmin()" class="text-xs bg-slate-800 text-slate-300 p-1.5 rounded-full"><i class="fa-solid fa-shield"></i></button>
-</div>
+<div><button onclick="openHint()" class="text-xs bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full border border-amber-500/30 mr-2">ขอคำใบ้</button>
+<button onclick="toggleAdmin()" class="text-xs bg-slate-800 text-slate-300 p-1.5 rounded-full"><i class="fa-solid fa-shield"></i></button></div>
 </header>
 <main class="flex-1 flex flex-col justify-between">
 <div class="glass p-5 rounded-2xl space-y-4">
@@ -26,42 +24,35 @@
 <button onclick="checkAns()" class="w-full bg-gradient-to-r from-pink-600 to-rose-500 text-white py-3 rounded-xl font-medium text-sm shadow-lg">ส่งคำตอบ</button>
 </div>
 <div id="letterBox" class="hidden glass p-5 rounded-2xl space-y-4">
-<h2 class="text-center font-bold text-pink-300 text-lg"><i class="fa-solid fa-envelope-open-text"></i> จดหมายความในใจ 💌</h2>
+<h2 class="text-center font-bold text-pink-300 text-lg">💌 จดหมายความในใจ 💌</h2>
 <div class="bg-slate-900/60 p-3 rounded-xl text-xs text-slate-200 max-h-48 overflow-y-auto space-y-2">
-<p>ผมชอบคุณมากๆเลย จริงๆแล้วผมชอบคุณมานานมากแล้วด้วย แต่ไม่มีโอกาสบอก ไม่กล้าบอกและก็ดูจากสภาพตัวเองแล้วมันก็ไม่ต่างอะไรกับคนจนๆอยากได้เพชรสักตันนึงเลย ผมเลยไม่มีโอกาสได้พูดออกมาสักทีจนวันนี้</p>
-<p>ผมอยากจะบอกว่าผมชอบคุณ ผมรู้ว่าหน้าตา นิสัย และรูปร่างผมไม่เหมาะกับคุณมากๆ แบบมากๆเลย แต่ผมก็ยังชอบคุณแม้จะรู้ว่าสุดท้ายตอนจบก็คือผมอาจจะมองหน้าคุณอยากขึ้น และผมก็ไม่สมหวังอีกตามเคยแบบหลายๆครั้ง จริงๆผมก็ท้อนะที่ผมพยายามหลายครั้งแล้วก็พังอยู่ดี คุณเป็นผู้หญิงที่ผมคิดว่าสวยมาก คือสวยจริงๆนะ สวยจนคิดว่าผู้ชายอย่างผมจะไม่มีวันได้คุยกับคุณ แต่พอได้คุยกันจริงๆแล้วผมเริ่มรู้สึกสนิท เริ่มกล้าที่จะแสดงออกความเป็นตัวเอง ผมรู้สึกผ่อนคลายและสบายใจที่จะอยู่กับคุณ ถ้าคุณไม่ชอบผมก็ไม่เป็นไร แต่ขออย่างเดียว ช่วยอย่าเอาเรื่องผมไปล้อ ช่วยอย่าทำให้เป็นเรื่องตลกด้วยเถอะ ผมไม่อยากเจ็บ ไม่อยากท้อ และไม่อยากเครียดอีกแล้ว อย่างน้อยถ้าคุณไม่ชอบผม ก็ช่วยอย่าทำเหมือนผมประหลาดหรือน่าขยะแขยงด้วยนะ แต่ถ้าคุณชอบผม ก็ขอบคุณมากๆที่ชอบผม เอาเป็นว่าถ้าคุณชอบผมจริงๆค่อยคุยกันละกัน และนี่คือชื่อของคนที่ผมชอบ...</p>
+<p>ผมชอบคุณมากๆเลย จริงๆแล้วผมชอบคุณมานานมากแล้วด้วย แต่ไม่มีโอกาสบอก ไม่กล้าบอกและก็ดูจากสภาพตัวเองแล้วมันก็ไม่ต่างอะไรกับคนจนๆอยากได้เพชรสักตันนึงเลย ผมเลยไม่มีโอกาสได้พูดออกมาสักทีจนวันนี้ ผมอยากจะบอกว่าผมชอบคุณ ผมรู้ว่าหน้าตา นิสัย และรูปร่างผมไม่เหมาะกับคุณมากๆ แบบมากๆเลย แต่ผมก็ยังชอบคุณแม้จะรู้ว่าสุดท้ายตอนจบก็คือผมอาจจะมองหน้าคุณอยากขึ้น และผมก็ไม่สมหวังอีกตามเคยแบบหลายๆครั้ง จริงๆผมก็ท้อนะที่ผมพยายามหลายครั้งแล้วก็พังอยู่ดี คุณเป็นผู้หญิงที่ผมคิดว่าสวยมาก คือสวยจริงๆนะ สวยจนคิดว่าผู้ชายอย่างผมจะไม่มีวันได้คุยกับคุณ แต่พอได้คุยกันจริงๆแล้วผมเริ่มรู้สึกสนิท เริ่มกล้าที่จะแสดงออกความเป็นตัวเอง ผมรู้สึกผ่อนคลายและสบายใจที่จะอยู่กับคุณ ถ้าคุณไม่ชอบผมก็ไม่เป็นไร แต่ขออย่างเดียว ช่วยอย่าเอาเรื่องผมไปล้อ ช่วยอย่าทำให้เป็นเรื่องตลกด้วยเถอะ ผมไม่อยากเจ็บ ไม่อยากท้อ และไม่อยากเครียดอีกแล้ว อย่างน้อยถ้าคุณไม่ชอบผม ก็ช่วยอย่าทำเหมือนผมประหลาดหรือน่าขยะแขยงด้วยนะ แต่ถ้าคุณชอบผม ก็ขอบคุณมากๆที่ชอบผม เอาเป็นว่าถ้าคุณชอบผมจริงๆค่อยคุยกันละกัน และนี่คือชื่อของคนที่ผมชอบ...</p>
 </div>
-<div id="timerSec" class="text-center bg-slate-900 p-3 rounded-xl">
-<p class="text-xs text-slate-400">โปรดรอเวลาเปิดเผยชื่อคนที่ผมชอบ</p>
-<div id="cd" class="text-2xl font-mono font-bold text-pink-400">20:00</div>
-</div>
-<button id="revealBtn" disabled onclick="showName()" class="w-full bg-slate-700 text-slate-400 py-3 rounded-xl text-xs font-bold cursor-not-allowed"><i class="fa-solid fa-lock"></i> กรุณารอเวลา</button>
+<div id="timerSec" class="text-center bg-slate-900 p-3 rounded-xl"><p class="text-xs text-slate-400">โปรดรอเวลาเปิดเผยชื่อคนที่ผมชอบ</p><div id="cd" class="text-2xl font-mono font-bold text-pink-400">20:00</div></div>
+<button id="revealBtn" disabled onclick="showName()" class="w-full bg-slate-700 text-slate-400 py-3 rounded-xl text-xs font-bold cursor-not-allowed">🔒 กรุณารอเวลา</button>
 </div>
 </main>
 <div id="hintModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
 <div class="glass p-5 rounded-2xl max-w-sm w-full space-y-3">
-<div class="flex justify-between text-amber-400 font-bold text-sm"><span>ขอคำใบ้</span><button onclick="document.getElementById('hintModal').classList.add('hidden')"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="flex justify-between text-amber-400 font-bold text-sm"><span>ขอคำใบ้</span><button onclick="document.getElementById('hintModal').classList.add('hidden')">✕</button></div>
 <p class="text-[10px] text-rose-300">⚠️ กรุณาใส่ตามความจริงไม่งั้นไม่มีสิทธิ์ได้อนุมัติ</p>
 <input id="hName" placeholder="ชื่อของคุณ..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded-xl text-xs text-white">
 <input id="hTarget" placeholder="คนที่คุณชอบ..." class="w-full bg-slate-900 border border-slate-700 p-2 rounded-xl text-xs text-white">
 <div id="hStatus" class="hidden text-xs p-2 rounded bg-slate-800 text-center"></div>
 <button onclick="reqHint()" class="w-full bg-amber-600 text-white py-2 rounded-xl text-xs font-bold">ส่งคำขอคำใบ้</button>
-</div>
-</div>
+</div></div>
 <div id="adminModal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center p-4 z-50">
 <div class="glass p-5 rounded-2xl max-w-md w-full space-y-3 flex flex-col max-h-[80vh]">
-<div class="flex justify-between text-slate-200 font-bold text-sm"><span>แผงควบคุมอนุมัติคำใบ้</span><button onclick="toggleAdmin()"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="flex justify-between text-slate-200 font-bold text-sm"><span>แผงควบคุมอนุมัติคำใบ้</span><button onclick="toggleAdmin()">✕</button></div>
 <div id="adminList" class="flex-1 overflow-y-auto space-y-2 text-xs"></div>
 <button onclick="toggleAdmin()" class="bg-slate-800 text-slate-300 py-1.5 rounded-xl text-xs">ปิด</button>
-</div>
-</div>
+</div></div>
 <div id="nameModal" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center p-4 z-50">
 <div class="glass p-6 rounded-2xl max-w-sm w-full text-center space-y-4">
 <i class="fa-solid fa-heart text-pink-400 text-3xl"></i>
 <div class="p-4 bg-pink-950/50 border border-pink-500/30 rounded-xl text-sm font-semibold text-rose-200">"แก้ม กุชอบมึงนะ ไอคนโรคจิตไิคนอ้วนไอคนน่าเกลียดคนนี้เนี่ยแหละที่ชอบมึง"</div>
 <button onclick="document.getElementById('nameModal').classList.add('hidden')" class="w-full bg-pink-600 text-white py-2.5 rounded-xl text-xs font-bold">ปิดหน้านี้</button>
-</div>
-</div>
+</div></div>
 <script>
 const S=[
 {b:"STAGE 1",t:"รหัสมอสปริศนา",d:"ถอดรหัสมอสเป็นภาษาอังกฤษ (พิมพ์ใหญ่)",c:".-. --- ... .",h:"คำว่า ROSE",a:"ROSE",i:"text"},
@@ -73,7 +64,7 @@ const S=[
 {b:"STAGE 7",t:"แปลรหัส NPC",d:"แปล 'SWEET COOKIE' เป็นไทย",c:"SWEET COOKIE",h:"คุกกี้แสนหวาน",a:"คุกกี้แสนหวาน",i:"text"},
 {b:"STAGE 8",t:"ตู้เซฟใบที่ 2",d:"นับพยัญชนะไทยใน 'คุกกี้แสนหวาน' (7 ตัว)",c:"[🔒 FINAL SAFE]",h:"รหัสคือ 7777",a:"7777",i:"num"}
 ];
-let cur=0, numVal="", timer=null, left=1200;
+let cur=0,numVal="",timer=null,left=1200;
 function render(){
 if(cur>=S.length){document.querySelector('main').children[0].classList.add('hidden');document.getElementById('letterBox').classList.remove('hidden');startCd();return;}
 let s=S[cur];
@@ -82,55 +73,17 @@ document.getElementById('stTitle').innerText=s.t;
 document.getElementById('stDesc').innerText=s.d;
 document.getElementById('stDisplay').innerText=s.c;
 numVal="";
-document.getElementById('stInput').innerHTML = s.i==='text' ?
-'<input id="ansTxt" placeholder="พิมพ์คำตอบ..." class="w-full bg-slate-900 border border-slate-700 p-3 rounded-xl text-sm text-white">' :
-'<div id="numDisp" class="w-full bg-slate-900 border border-slate-700 p-2 text-center text-lg font-mono text-pink-300 font-bold mb-2">____</div>' +
-'<div class="grid grid-cols-3 gap-2 max-w-[200px] mx-auto">'+['1','2','3','4','5','6','7','8','9','C','0','DEL'].map(x=>'<button onclick="press(\''+x+'\')" class="bg-slate-800 border border-slate-700 py-1.5 rounded-lg text-white font-bold text-sm">'+x+'</button>').join('')+'</div>';
-document.getElementById('stProg').innerText=(cur+1)+' / 8';
-}
-function press(v){
-if(v==='C')numVal="";
-else if(v==='DEL')numVal=numVal.slice(0,-1);
-else if(numVal.length<4)numVal+=v;
-let d=document.getElementById('numDisp');if(d)d.innerText=numVal.padEnd(4,'_');
-}
-function checkAns(){
-let s=S[cur], val=s.i==='text'?(document.getElementById('ansTxt')?.value.trim()||''):numVal;
-if(!val)return alert("กรอกคำตอบก่อนสิยะ!");
-let ok = s.i==='text' ? val.toUpperCase()===s.a.toUpperCase() : val===s.a;
-if(ok){cur++;render();}else{alert("ตอบผิด ลองใหม่!");}
-}
+document.getElementById('stInput').innerHTML=s.i==='text'?'<input id="ansTxt" placeholder="พิมพ์คำตอบ..." class="w-full bg-slate-900 border border-slate-700 p-3 rounded-xl text-sm text-white">':'<div id="numDisp" class="w-full bg-slate-900 border border-slate-700 p-2 text-center text-lg font-mono text-pink-300 font-bold mb-2">____</div><div class="grid grid-cols-3 gap-2 max-w-[200px] mx-auto">'+['1','2','3','4','5','6','7','8','9','C','0','DEL'].map(x=>'<button onclick="press(\''+x+'\')" class="bg-slate-800 border border-slate-700 py-1.5 rounded-lg text-white font-bold text-sm">'+x+'</button>').join('')+'</div>';
+document.getElementById('stProg').innerText=(cur+1)+' / 8';}
+function press(v){if(v==='C')numVal="";else if(v==='DEL')numVal=numVal.slice(0,-1);else if(numVal.length<4)numVal+=v;let d=document.getElementById('numDisp');if(d)d.innerText=numVal.padEnd(4,'_');}
+function checkAns(){let s=S[cur],val=s.i==='text'?(document.getElementById('ansTxt')?.value.trim()||''):numVal;if(!val)return alert("กรอกคำตอบก่อนสิยะ!");let ok=s.i==='text'?val.toUpperCase()===s.a.toUpperCase():val===s.a;if(ok){cur++;render();}else{alert("ตอบผิด ลองใหม่!");}}
 function openHint(){document.getElementById('hintModal').classList.remove('hidden');checkHintSt();}
-function reqHint(){
-let u=document.getElementById('hName').value.trim(), t=document.getElementById('hTarget').value.trim();
-if(!u||!t)return alert("กรอกข้อมูลให้ครบ!");
-let reqs=JSON.parse(localStorage.getItem('hints')||'[]');
-reqs.push({id:Date.now(),stage:S[cur].b,u,t,status:'pending',time:new Date().toLocaleTimeString()});
-localStorage.setItem('hints',JSON.stringify(reqs));
-alert("ส่งคำขอแล้ว รอเจ้าของเว็บอนุมัติ");
-document.getElementById('hintModal').classList.add('hidden');
-}
-function checkHintSt(){
-let reqs=JSON.parse(localStorage.getItem('hints')||'[]'), r=reqs.filter(x=>x.stage===S[cur].b).pop(), st=document.getElementById('hStatus');
-if(!r)return st.classList.add('hidden');
-st.classList.remove('hidden');
-st.innerText = r.status==='approved' ? 'คำใบ้: '+S[cur].h : (r.status==='rejected'?'ถูกปฏิเสธ':'กำลังรออนุมัติ...');
-}
+function reqHint(){let u=document.getElementById('hName').value.trim(),t=document.getElementById('hTarget').value.trim();if(!u||!t)return alert("กรอกข้อมูลให้ครบ!");let reqs=JSON.parse(localStorage.getItem('hints')||'[]');reqs.push({id:Date.now(),stage:S[cur].b,u,t,status:'pending'});localStorage.setItem('hints',JSON.stringify(reqs));alert("ส่งคำขอแล้ว รออนุมัติ");document.getElementById('hintModal').classList.add('hidden');}
+function checkHintSt(){let reqs=JSON.parse(localStorage.getItem('hints')||'[]'),r=reqs.filter(x=>x.stage===S[cur].b).pop(),st=document.getElementById('hStatus');if(!r)return st.classList.add('hidden');st.classList.remove('hidden');st.innerText=r.status==='approved'?'คำใบ้: '+S[cur].h:(r.status==='rejected'?'ถูกปฏิเสธ':'รออนุมัติ...');}
 function toggleAdmin(){let m=document.getElementById('adminModal');m.classList.toggle('hidden');if(!m.classList.contains('hidden'))renderAdmin();}
-function renderAdmin(){
-let reqs=JSON.parse(localStorage.getItem('hints')||'[]'), list=document.getElementById('adminList');
-if(!reqs.length)return list.innerHTML='<div class="text-center text-slate-500 py-4">ไม่มีคำขอ</div>';
-list.innerHTML=reqs.slice().reverse().map(r=>'<div class="bg-slate-900 p-2 rounded border border-slate-700 space-y-1"><div><b>'+r.stage+'</b> | ผู้ขอ: '+r.u+' -> ชอบ: '+r.t+'</div><div class="flex justify-between items-center"><span class="text-[10px] text-amber-400">'+r.status+'</span><div class="space-x-1"><button onclick="upd('+r.id+',\'approved\')" class="bg-emerald-600 px-2 py-0.5 rounded text-[10px]">อนุมัติ</button><button onclick="upd('+r.id+',\'rejected\')" class="bg-rose-600 px-2 py-0.5 rounded text-[10px]">(-)</button></div></div></div>').join('');
-}
+function renderAdmin(){let reqs=JSON.parse(localStorage.getItem('hints')||'[]'),list=document.getElementById('adminList');if(!reqs.length)return list.innerHTML='<div class="text-center text-slate-500 py-4">ไม่มีคำขอ</div>';list.innerHTML=reqs.slice().reverse().map(r=>'<div class="bg-slate-900 p-2 rounded border border-slate-700 space-y-1"><div><b>'+r.stage+'</b> | '+r.u+' -> '+r.t+'</div><div class="flex justify-between items-center"><span class="text-[10px] text-amber-400">'+r.status+'</span><div class="space-x-1"><button onclick="upd('+r.id+',\'approved\')" class="bg-emerald-600 px-2 py-0.5 rounded text-[10px]">อนุมัติ</button><button onclick="upd('+r.id+',\'rejected\')" class="bg-rose-600 px-2 py-0.5 rounded text-[10px]">ปฏิเสธ</button></div></div></div>').join('');}
 function upd(id,st){let reqs=JSON.parse(localStorage.getItem('hints')||'[]');let r=reqs.find(x=>x.id===id);if(r){r.status=st;localStorage.setItem('hints',JSON.stringify(reqs));renderAdmin();}}
-function startCd(){
-if(timer)return;
-timer=setInterval(()=>{
-left--;let m=Math.floor(left/60),s=left%60;
-document.getElementById('cd').innerText=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-if(left<=0){clearInterval(timer);document.getElementById('timerSec').classList.add('hidden');let b=document.getElementById('revealBtn');b.disabled=false;b.className="w-full bg-gradient-to-r from-pink-600 to-rose-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg";b.innerHTML='<i class="fa-solid fa-heart"></i> กดเพื่อเปิดเผยชื่อคนที่ชอบ';}
-},1000);
-}
+function startCd(){if(timer)return;timer=setInterval(()=>{left--;let m=Math.floor(left/60),s=left%60;document.getElementById('cd').innerText=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(left<=0){clearInterval(timer);document.getElementById('timerSec').classList.add('hidden');let b=document.getElementById('revealBtn');b.disabled=false;b.className="w-full bg-gradient-to-r from-pink-600 to-rose-500 text-white py-3 rounded-xl text-xs font-bold shadow-lg";b.innerHTML='<i class="fa-solid fa-heart"></i> กดเพื่อเปิดเผยชื่อคนที่ชอบ';}},1000);}
 function showName(){document.getElementById('nameModal').classList.remove('hidden');}
 window.onload=render;
 </script>

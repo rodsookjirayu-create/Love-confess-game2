@@ -388,4 +388,246 @@
             const stage = STAGES[currentStageIndex];
             document.getElementById('stageBadge').innerText = stage.badge;
             document.getElementById('stageIcon').className = `fa-solid ${stage.icon} text-pink-400 text-lg`;
-            document.getElementById(
+            document.getElementById('stageTitle').innerText = stage.title;
+            document.getElementById('stageInstruction').innerText = stage.instruction;
+
+            let displayHtml = `<div class="font-mono text-base sm:text-lg font-bold text-pink-300 tracking-wider">${stage.cipherDisplay}</div>`;
+            if (stage.puzzleNote) {
+                displayHtml += `<div class="text-[11px] text-slate-400 mt-1">${stage.puzzleNote}</div>`;
+            }
+            document.getElementById('puzzleDisplay').innerHTML = displayHtml;
+
+            let interactiveHtml = '';
+            if (stage.inputType === 'text') {
+                numpadInput = "";
+                interactiveHtml = `<input type="text" id="textAnswerInput" placeholder="${stage.placeholder}" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-pink-500 shadow-inner">`;
+            } else if (stage.inputType === 'numpad') {
+                numpadInput = "";
+                interactiveHtml = `
+                    <div>
+                        <div id="numpadDisplay" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-2.5 text-center text-lg font-mono font-bold text-pink-300 tracking-widest mb-3 h-11 flex items-center justify-center shadow-inner">____</div>
+                        <div class="grid grid-cols-3 gap-2 max-w-[240px] mx-auto">
+                            <button onclick="pressNumpad('1')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">1</button>
+                            <button onclick="pressNumpad('2')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">2</button>
+                            <button onclick="pressNumpad('3')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">3</button>
+                            <button onclick="pressNumpad('4')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">4</button>
+                            <button onclick="pressNumpad('5')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">5</button>
+                            <button onclick="pressNumpad('6')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">6</button>
+                            <button onclick="pressNumpad('7')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">7</button>
+                            <button onclick="pressNumpad('8')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">8</button>
+                            <button onclick="pressNumpad('9')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">9</button>
+                            <button onclick="pressNumpad('C')" class="bg-rose-950/40 hover:bg-rose-900/50 border border-rose-800/50 py-2 rounded-lg text-rose-300 font-bold text-xs">C</button>
+                            <button onclick="pressNumpad('0')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-white font-bold text-sm">0</button>
+                            <button onclick="pressNumpad('DEL')" class="bg-slate-800/80 hover:bg-slate-700 border border-slate-700 py-2 rounded-lg text-slate-300 font-bold text-xs"><i class="fa-solid fa-delete-left"></i></button>
+                        </div>
+                    </div>
+                `;
+            }
+            document.getElementById('interactiveArea').innerHTML = interactiveHtml;
+            document.getElementById('stageProgressText').innerText = `ด่าน ${currentStageIndex + 1} / ${STAGES.length}`;
+            document.getElementById('progressBar').style.width = `${((currentStageIndex + 1) / STAGES.length) * 100}%`;
+        }
+
+        function pressNumpad(val) {
+            if (val === 'C') {
+                numpadInput = "";
+            } else if (val === 'DEL') {
+                numpadInput = numpadInput.slice(0, -1);
+            } else {
+                if (numpadInput.length < 4) numpadInput += val;
+            }
+            let displayStr = numpadInput.padEnd(4, '_');
+            document.getElementById('numpadDisplay').innerText = displayStr;
+        }
+
+        function checkAnswer() {
+            const stage = STAGES[currentStageIndex];
+            let userAns = "";
+            if (stage.inputType === 'text') {
+                const inputEl = document.getElementById('textAnswerInput');
+                if (inputEl) userAns = inputEl.value.trim();
+            } else if (stage.inputType === 'numpad') {
+                userAns = numpadInput;
+            }
+
+            if (!userAns) {
+                showToast("กรุณากรอกคำตอบก่อนส่งด้วยนะยะ!");
+                return;
+            }
+
+            let isCorrect = false;
+            if (stage.inputType === 'text') {
+                isCorrect = userAns.toUpperCase() === stage.answer.toUpperCase();
+            } else {
+                isCorrect = userAns === stage.answer;
+            }
+
+            if (isCorrect) {
+                showToast("ถูกต้องนะยะ เก่งใช้ได้นี่! ไปด่านถัดไปกันเลย");
+                currentStageIndex++;
+                setTimeout(() => {
+                    renderStage();
+                }, 800);
+            } else {
+                showToast("ตอบผิดนะยะ ลองคิดดูใหม่อีกทีซิ!");
+            }
+        }
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function openHintModal() {
+            document.getElementById('hintModal').classList.remove('hidden');
+            checkExistingHintStatus();
+        }
+        function closeHintModal() {
+            document.getElementById('hintModal').classList.add('hidden');
+        }
+
+        function submitHintRequest() {
+            const uName = document.getElementById('hintUserName').value.trim();
+            const tName = document.getElementById('hintTargetName').value.trim();
+            if(!uName || !tName) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วนตามความจริงก่อนขอคำใบ้นะยะ!");
+                return;
+            }
+
+            const requests = JSON.parse(localStorage.getItem('hintRequests') || '[]');
+            const newReq = {
+                id: Date.now(),
+                stage: STAGES[currentStageIndex].badge,
+                userName: uName,
+                targetName: tName,
+                status: 'pending',
+                timestamp: new Date().toLocaleString()
+            };
+            requests.push(newReq);
+            localStorage.setItem('hintRequests', JSON.stringify(requests));
+
+            alert("ส่งคำขอคำใบ้เรียบร้อย! โปรดรอเจ้าของเว็บอนุมัติ");
+            closeHintModal();
+            checkExistingHintStatus();
+        }
+
+        function checkExistingHintStatus() {
+            const requests = JSON.parse(localStorage.getItem('hintRequests') || '[]');
+            const currentBadge = STAGES[currentStageIndex].badge;
+            const stageReqs = requests.filter(r => r.stage === currentBadge);
+            const statusContainer = document.getElementById('hintStatusContainer');
+            
+            if (stageReqs.length === 0) {
+                statusContainer.classList.add('hidden');
+                return;
+            }
+
+            const latest = stageReqs[stageReqs.length - 1];
+            statusContainer.classList.remove('hidden');
+
+            if (latest.status === 'approved') {
+                statusContainer.className = "text-xs p-2.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-center";
+                statusContainer.innerHTML = `<strong>คำใบ้สำหรับคุณ:</strong> ${STAGES[currentStageIndex].hintText}`;
+            } else if (latest.status === 'rejected') {
+                statusContainer.className = "text-xs p-2.5 rounded-lg bg-rose-950/60 border border-rose-500/30 text-rose-300 text-center";
+                statusContainer.innerHTML = `คำขอของคุณถูกปฏิเสธ (อาจใส่ชื่อไม่ถูกต้อง)`;
+            } else {
+                statusContainer.className = "text-xs p-2.5 rounded-lg bg-amber-950/60 border border-amber-500/30 text-amber-300 text-center";
+                statusContainer.innerHTML = `สถานะ: กำลังรอเจ้าของเว็บอนุมัติคำใบ้...`;
+            }
+        }
+
+        function toggleAdminPanel() {
+            const modal = document.getElementById('adminModal');
+            modal.classList.toggle('hidden');
+            if(!modal.classList.contains('hidden')) {
+                renderAdminRequests();
+            }
+        }
+
+        function renderAdminRequests() {
+            const listEl = document.getElementById('adminRequestsList');
+            const requests = JSON.parse(localStorage.getItem('hintRequests') || '[]');
+
+            if(requests.length === 0) {
+                listEl.innerHTML = `<div class="text-center text-slate-500
+
+ py-6 text-xs">ยังไม่มีคำขอคำใบ้จากใครเลย</div>; return; }`
+            let html = '';
+            requests.slice().reverse().forEach(req => {
+                let statusBadge = `<span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">รออนุมัติ</span>`;
+                if(req.status === 'approved') statusBadge = `<span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">อนุมัติแล้ว</span>`;
+                if(req.status === 'rejected') statusBadge = `<span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300">ปฏิเสธแล้ว</span>`;
+
+                html += `
+                    <div class="bg-slate-900/90 border border-slate-700 p-3 rounded-xl space-y-2 text-xs">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-pink-400">${req.stage}</span>
+                            <span class="text-[10px] text-slate-500">${req.timestamp}</span>
+                        </div>
+                        <div class="text-slate-200">
+                            <div><strong>ผู้ขอ:</strong> ${req.userName}</div>
+                            <div><strong>ชอบใคร:</strong> ${req.targetName}</div>
+                        </div>
+                        <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                            <div>${statusBadge}</div>
+                            <div class="space-x-1">
+                                <button onclick="updateRequestStatus(${req.id}, 'approved')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-2.5 py-1 rounded text-[11px]">อนุมัติ</button>
+                                <button onclick="updateRequestStatus(${req.id}, 'rejected')" class="bg-rose-600 hover:bg-rose-500 text-white px-2.5 py-1 rounded text-[11px]">ปฏิเสธ</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            listEl.innerHTML = html;
+        }
+
+        function updateRequestStatus(id, newStatus) {
+            const requests = JSON.parse(localStorage.getItem('hintRequests') || '[]');
+            const idx = requests.findIndex(r => r.id === id);
+            if(idx !== -1) {
+                requests[idx].status = newStatus;
+                localStorage.setItem('hintRequests', JSON.stringify(requests));
+                renderAdminRequests();
+            }
+        }
+
+        function clearAllRequests() {
+            if(confirm("แน่ใจนะว่าจะลบประวัติคำขอทั้งหมด?")) {
+                localStorage.removeItem('hintRequests');
+                renderAdminRequests();
+            }
+        }
+
+        function startCountdown() {
+            if(countdownTimer) return;
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                let mins = Math.floor(timeLeft / 60);
+                let secs = timeLeft % 60;
+                document.getElementById('countdown').innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+
+                if(timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById('timerContainer').classList.add('hidden');
+                    const btn = document.getElementById('revealNameBtn');
+                    btn.disabled = false;
+                    btn.className = "w-full bg-gradient-to-r from-pink-600 to-rose-500 text-white font-medium py-3 px-4 rounded-xl glow-btn transition flex items-center justify-center space-x-2 text-sm shadow";
+                    btn.innerHTML = `<i class="fa-solid fa-heart-pulse"></i><span>กดเพื่อเปิดเผยชื่อคนที่ผมชอบ ❤️</span>`;
+                }
+            }, 1000);
+        }
+
+        function revealTargetName() {
+            document.getElementById('nameRevealModal').classList.remove('hidden');
+        }
+        function closeNameRevealModal() {
+            document.getElementById('nameRevealModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
